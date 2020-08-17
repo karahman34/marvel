@@ -1,0 +1,42 @@
+.feed {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+
+  .feed-link {
+    position: relative;
+    text-decoration: none;
+
+    .feed-text {
+      color: white;
+    }
+  }
+
+  .feed-link:hover {
+    .feed-text {
+      color: #66bb6a;
+    }
+  }
+}
+
+.home-container {
+  width: 90%;
+}
+
+@media screen and (min-width: 1624px) {
+  .home-container {
+    max-width: 75%;
+  }
+}
+
+.feed-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .feed-header-text {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+  }
+}
