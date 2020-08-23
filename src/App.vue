@@ -13,11 +13,13 @@
       @close="navDraw = false"
     />
 
-
     <!-- Main -->
     <v-main>
       <!-- Toast -->
       <toast />
+
+      <!-- Loader Circular Dialog -->
+      <loader-circular-dialog />
 
       <!-- Router View -->
       <router-view />
@@ -29,6 +31,7 @@
 import AppBar from "@/components/LayoutPartials/AppBar"
 import NavDraw from "@/components/LayoutPartials/NavDraw"
 import Toast from '@/components/Toast.vue'
+import LoaderCircularDialog from "@/components/LoaderCircularDialog"
 
 export default {
   name: 'App',
@@ -36,7 +39,8 @@ export default {
   components: {
     Toast,
     AppBar,
-    NavDraw
+    NavDraw,
+    LoaderCircularDialog
   },
 
   data: () => ({
