@@ -33,9 +33,12 @@ export default {
   },
 
   watch: {
-    $route(to){
-      const page = to.query.page
-      if (page) this.localPage = page
+    $route: {
+      immediate: true,
+      handler(to){
+        const page = parseInt(to.query.page)
+        if (page) this.localPage = page
+      }
     },
     localPage(val) {
       if (this.localPage === this.$route.query.page) return
