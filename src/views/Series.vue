@@ -72,6 +72,14 @@
       :per-page="limit"
       :items-length="itemsLength"
     />
+
+    <!-- 404 Not found / Empty -->
+    <h2
+      v-if="!loading && !series.length"
+      class="text-center white--text mt-4"
+    >
+      Series not found..
+    </h2>
   </div>
 </template>
 
