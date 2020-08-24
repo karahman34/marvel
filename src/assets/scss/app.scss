@@ -1,9 +1,6 @@
 .feed {
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-
   .feed-link {
+    cursor: pointer;
     position: relative;
     text-decoration: none;
 
@@ -21,6 +18,9 @@
 
 .home-container {
   width: 90%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 @media screen and (min-width: 1624px) {
