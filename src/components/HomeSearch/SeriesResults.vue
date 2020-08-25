@@ -6,7 +6,7 @@
       cols="6"
       sm="4"
       md="3"
-      class="px-2 py-3"
+      class="px-2 pb-6 pt-0"
     >
       <series :series="result" />
     </v-col>

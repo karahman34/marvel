@@ -42,42 +42,46 @@
         </v-tabs>
 
         <!-- The Tabs Items -->
-        <v-tabs-items
-          v-model="tabActive"
-          style="padding: 0 10px;margin: 0 auto;"
-        >
+        <v-tabs-items v-model="tabActive">
           <v-tab-item
             v-for="tab in tabs"
             :key="tab"
+            class="py-3 px-3"
           >
             <!-- Loading -->
             <div
               v-if="loading"
-              class="text-center pb-4 font-weight-medium white--text"
+              class="text-center font-weight-medium white--text"
             >
               Loading...
             </div>
 
-            <!-- Main Content -->
-            <component
-              :is="tabActiveComponent"
-              v-else
-              :results="results"
-            />
+            <template v-if="!loading && results.length">
+              <!-- Main Content -->
+              <component
+                :is="tabActiveComponent"
+                :results="results"
+              />
 
-            <!-- See more button -->
-            <div
-              v-if="!loading && results.length"
-              class="pt-4 pb-6"
+              <!-- See more button -->
+              <div class="pb-1">
+                <v-btn
+                  block
+                  color="success"
+                  :to="goToRouteIndex()"
+                >
+                  See more
+                </v-btn>
+              </div>
+            </template>
+
+            <!-- 404 / Empty -->
+            <h2
+              v-if="!loading && !results.length"
+              class="text-center"
             >
-              <v-btn
-                block
-                color="success"
-                :to="goToRouteIndex()"
-              >
-                See more
-              </v-btn>
-            </div>
+              no results..
+            </h2>
           </v-tab-item>
         </v-tabs-items>
       </v-card>

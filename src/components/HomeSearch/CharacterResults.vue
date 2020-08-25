@@ -6,7 +6,7 @@
       cols="12"
       sm="6"
       md="3"
-      class="px-2 py-3"
+      class="px-2 pb-6 pt-0"
     >
       <character :character="result" />
     </v-col>
