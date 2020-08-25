@@ -69,6 +69,7 @@
                   block
                   color="success"
                   :to="goToRouteIndex()"
+                  :disabled="results.length >= itemsLength"
                 >
                   See more
                 </v-btn>
@@ -109,6 +110,7 @@ export default {
       search: null,
       searchTimeout: null,
       results: [],
+      itemsLength: null,
       tabActive: 0,
       tabs: ['comics', 'characters', 'series'],
       tabActiveComponent: 'comic-results'
@@ -121,7 +123,7 @@ export default {
 
       this.searchTimeout = setTimeout(() => {
         this.dialog = true
-        this.getResults()
+        if (this.search !== null) this.getResults()
       }, 600)
     },
     tabActive(val) {
@@ -178,6 +180,7 @@ export default {
         const {data} = res.data
 
         this.results = data.results
+        this.itemsLength = data.total
       } catch (e) {
         this.$toast.set({
           color: 'red',
