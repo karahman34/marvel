@@ -183,7 +183,7 @@ export default {
       } catch (e) {
         this.$toast.set({
           color: 'red',
-          message: 'Failed to fetch series data..'
+          msg: 'Failed to fetch series data..'
         })
       } finally {
         this.loading = false

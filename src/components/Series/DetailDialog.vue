@@ -139,7 +139,7 @@ export default {
       } catch (e) {
         this.$toast.set({
           color: 'red',
-          message: 'Failed to fetch character data.'
+          msg: 'Failed to fetch character data.'
         })
       } finally {
         this.$loadingOverlay.hide()
