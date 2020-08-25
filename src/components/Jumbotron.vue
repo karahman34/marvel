@@ -9,25 +9,21 @@
 
       <!-- Search -->
       <div id="jumbotron-search">
-        <v-text-field
-          v-model="search"
-          solo
-          label="Search for comics,characters,series.."
-          prepend-inner-icon="mdi mdi-magnify"
-        />
+        <!-- Home Search -->
+        <home-search />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import HomeSearch from "@/components/HomeSearch/HomeSearch"
+
 export default {
   name: 'Jumbotron',
 
-  data() {
-    return {
-      search: null
-    }
+  components: {
+    HomeSearch
   }
 }
 </script>
