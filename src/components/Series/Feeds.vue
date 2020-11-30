@@ -21,61 +21,62 @@
       </v-btn>
     </div>
 
-    <!-- Content -->
-    <v-row class="mt-2">
+    <!-- Carousel -->
+    <my-carousel class="mt-3">
       <!-- Skeleton -->
       <template v-if="loading">
-        <v-col
-          v-for="n in 12"
+        <slide
+          v-for="n in limit"
           :key="n"
-          cols="4"
-          xs="4"
-          sm="3"
-          xl="2"
+          class="px-2"
         >
-          <div>
-            <v-skeleton-loader type="image" />
-          </div>
-        </v-col>
+          <v-skeleton-loader
+            type="image"
+          />
+        </slide>
       </template>
 
-      <!-- Content -->
-      <template v-else>
-        <v-col
-          v-for="ser in series"
-          :key="ser.id"
-          xs="4"
-          sm="3"
-          xl="2"
+      <!-- List Of Series -->
+      <slide
+        v-for="ser in series"
+        v-else
+        :key="ser.id"
+        class="px-2"
+      >
+        <span
+          class="feed-link"
+          @click="focusSeries = ser"
         >
+          <!-- Thumbnail -->
+          <v-img
+            :src="`${ser.thumbnail.path}/portrait_incredible.${ser.thumbnail.extension}`"
+            class="feed-thumbnail"
+          />
+          <!-- Title -->
           <span
-            class="feed-link"
-            @click="focusSeries = ser"
-          >
-            <!-- Thumbnail -->
-            <v-img
-              :src="`${ser.thumbnail.path}/portrait_incredible.${ser.thumbnail.extension}`"
-              class="mb-2 feed-thumbnail"
-            />
-            <!-- Title -->
-            <span
-              class="feed-text"
-              v-text="ser.title"
-            />
-          </span>
-        </v-col>
-      </template>
-    </v-row>
+            class="feed-text"
+            v-text="ser.title"
+          />
+        </span>
+      </slide>
+    </my-carousel>
   </div>
 </template>
 
 <script>
-import DetailDialog from "@/components/Series/DetailDialog"
 import {getSeries} from '@/utils/marvel'
+import DetailDialog from "@/components/Series/DetailDialog"
 
 export default {
   components: {
     DetailDialog
+  },
+
+  props: {
+    limit: {
+      type: Number,
+      required: true
+    }
   },
 
   data() {
@@ -96,7 +97,7 @@ export default {
         this.loading = true
 
         const res = await getSeries({
-          limit: 12,
+          limit: this.limit,
           orderBy: '-modified'
         })
         const {data} = res.data

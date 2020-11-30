@@ -14,32 +14,27 @@
       </v-btn>
     </div>
 
-    <!-- Row -->
-    <v-row class="mt-2">
+    <!-- Carousel -->
+    <my-carousel class="mt-3">
       <!-- Skeleton -->
       <template v-if="loading">
-        <v-col
-          v-for="n in 12"
+        <slide
+          v-for="n in limit"
           :key="n"
-          cols="4"
-          xs="4"
-          sm="3"
-          xl="2"
+          class="px-2"
         >
           <div>
             <v-skeleton-loader type="image" />
           </div>
-        </v-col>
+        </slide>
       </template>
 
       <!-- Content -->
       <template v-else>
-        <v-col
+        <slide
           v-for="character in characters"
           :key="character.id"
-          xs="4"
-          sm="3"
-          xl="2"
+          class="px-2"
         >
           <!-- The Character -->
           <div
@@ -57,9 +52,9 @@
               v-text="character.name"
             />
           </div>
-        </v-col>
+        </slide>
       </template>
-    </v-row>
+    </my-carousel>
 
     <!-- Detail Dialog -->
     <feed-detail-dialog
@@ -77,6 +72,13 @@ import FeedDetailDialog from "@/components/Characters/FeedDetailDialog"
 export default {
   components: {
     FeedDetailDialog
+  },
+
+  props: {
+    limit: {
+      type: Number,
+      required: true
+    }
   },
 
   data() {
@@ -108,7 +110,7 @@ export default {
         this.loading = true
 
         const res = await getCharacters({
-          limit: 12,
+          limit: this.limit,
           orderBy: '-modified'
         })
         const {data} = res.data

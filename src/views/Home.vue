@@ -4,10 +4,13 @@
     <jumbotron />
 
     <!-- The Series -->
-    <series-feeds class="mt-6 mb-12" />
+    <series-feeds
+      class="mt-6 mb-12"
+      :limit="limit"
+    />
 
     <!-- The Characters -->
-    <character-feeds />
+    <character-feeds :limit="limit" />
   </div>
 </template>
 
@@ -23,6 +26,12 @@ export default {
     Jumbotron,
     SeriesFeeds,
     CharacterFeeds
+  },
+
+  data() {
+    return {
+      limit: 12
+    }
   }
 }
 </script>
