@@ -13,7 +13,10 @@
         to="/"
         class="text-decoration-none white--text"
       >
-        Logo
+        <img
+          id="logo-image"
+          src="@/assets/img/logo.png"
+        >
       </router-link>
     </v-toolbar-title>
 
@@ -43,6 +46,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  #logo-image {
+    height: 41px;
+    transform: translateY(10%);
+  }
+
+  @media screen and (max-width: 960px) {
+    #logo-image {
+      height: 39px;
+    }
+  }
+
   #nav-draw-activator {
     display: none;
   }
