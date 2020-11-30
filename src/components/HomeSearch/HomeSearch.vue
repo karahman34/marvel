@@ -3,9 +3,14 @@
     <!-- Text Input -->
     <v-text-field
       v-model="search"
+      class="home-search-input"
       solo
-      label="Search for comics,characters,series.."
+      dense
+      rounded
+      single-line
+      hide-details
       prepend-inner-icon="mdi mdi-magnify"
+      label="Search for comics,characters,series.."
     />
 
     <!-- The dialog -->
@@ -14,15 +19,25 @@
       max-width="1000"
     >
       <v-card>
+        <v-card-title class="d-flex justify-space-between align-center">
+          <div>
+            <v-icon>mdi mdi-magnify</v-icon>
+            Search
+          </div>
+
+          <v-btn icon>
+            <v-icon>mdi mdi-close</v-icon>
+          </v-btn>
+        </v-card-title>
+
         <!-- Text Input -->
         <div
-          class="px-4 pt-1"
+          class="px-2 pt-1"
           :class="{'pt-2': search !== null && search.lenght}"
         >
           <v-text-field
             v-model="search"
-            label="Search for comics,characters,series.."
-            prepend-inner-icon="mdi mdi-magnify"
+            label="Enter the keywords here.."
             :loading="loading"
           />
         </div>
@@ -56,6 +71,7 @@
               Loading...
             </div>
 
+            <!-- The Content -->
             <template v-if="!loading && results.length">
               <!-- Main Content -->
               <component
@@ -194,3 +210,22 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .home-search-input {
+    border: 2px solid;
+    border-color: #1B5E20;
+  }
+
+  .home-search-input.v-input--is-focused {
+    border: 3px solid;
+    border-color: #66BB6A;
+  }
+
+  @media screen and (max-width: 750px) {
+    .home-search-input {
+      max-width: 80% !important;
+      float: right;
+    }
+  }
+</style>

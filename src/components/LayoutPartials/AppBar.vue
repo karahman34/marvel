@@ -8,7 +8,7 @@
       @click="$emit('nav-draw-toggle')"
     />
 
-    <v-toolbar-title>
+    <v-toolbar-title class="tool-bar-title">
       <router-link
         to="/"
         class="text-decoration-none white--text"
@@ -22,6 +22,10 @@
 
     <v-spacer />
 
+    <!-- Home Search -->
+    <home-search class="home-search-component" />
+
+    <!-- Normal Menus -->
     <router-link
       v-for="menu in menus"
       :key="menu.text"
@@ -35,7 +39,13 @@
 </template>
 
 <script>
+import HomeSearch from '@/components/HomeSearch/HomeSearch'
+
 export default {
+  components: {
+    HomeSearch
+  },
+
   props: {
     menus: {
       type: Array,
@@ -100,5 +110,21 @@ export default {
     .menu {
       display: none;
     }
+
+    .tool-bar-title {
+      padding: 0 !important;
+    }
+
+    .home-search-component {
+      margin: 0 !important;
+    }
+
+    #logo-image {
+      height: 34px;
+    }
+  }
+
+  .home-search-component {
+    margin-right: 8px;
   }
 </style>
