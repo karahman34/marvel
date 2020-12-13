@@ -164,20 +164,21 @@ export default {
   },
 
   watch: {
-    currentPage(val, old) {
-      this.previousPage = old
+    currentPage() {
+      this.searchCharacters()
     },
-    payload: {
-      deep: true,
-      handler() {
-        if (this.currentPage === this.previousPage && this.currentPage > 1) {
-          this.$router.replace({
-            ...this.$route.query,
-            page: 1
-          })
-        } else {
-          this.searchCharacters()
-        }
+    search() {
+      if (this.currentPage === 1) {
+        this.searchCharacters()
+      } else {
+        this.replaceToPageOne()
+      }
+    },
+    orderBy() {
+      if (this.currentPage === 1) {
+        this.searchCharacters()
+      } else {
+        this.replaceToPageOne()
       }
     }
   },
@@ -187,6 +188,12 @@ export default {
   },
 
   methods: {
+    replaceToPageOne() {
+      this.$router.replace({
+        ...this.$route.query,
+        page: 1
+      }).catch(()=>{})
+    },
     scrollToTop() {
       window.scrollTo(0, 0)
     },
