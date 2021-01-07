@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="home-search-container">
     <!-- Text Input -->
     <v-text-field
       v-model="search"
@@ -222,10 +222,15 @@ export default {
     border-color: #66BB6A;
   }
 
+  .home-search-container {
+    max-width: 50% !important;
+  }
+
   @media screen and (max-width: 750px) {
     .home-search-input {
-      max-width: 80% !important;
-      float: right;
+      width: 100%;
+      margin-left: auto;
+      margin-right: 0;
     }
   }
 </style>

@@ -125,6 +125,7 @@ export default {
   }
 
   .home-search-component {
+    width: max-content;
     margin-right: 8px;
   }
 </style>
