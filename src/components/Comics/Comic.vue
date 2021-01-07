@@ -10,7 +10,10 @@
     <!-- Comic -->
     <v-card class="comic">
       <!-- Thumbnail -->
-      <v-img :src="imgSrc" />
+      <v-img
+        :src="imgSrc"
+        min-height="200px"
+      />
 
       <!-- Title -->
       <v-card-subtitle>

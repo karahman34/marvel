@@ -7,6 +7,7 @@
         <v-col cols="6">
           <v-img
             class="chara-thumbnail"
+            min-height="200px"
             :src="`${character.thumbnail.path}/portrait_uncanny.${character.thumbnail.extension}`"
           />
         </v-col>

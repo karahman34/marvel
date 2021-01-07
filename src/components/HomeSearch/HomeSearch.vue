@@ -25,7 +25,10 @@
             Search
           </div>
 
-          <v-btn icon>
+          <v-btn
+            icon
+            @click="dialog = false"
+          >
             <v-icon>mdi mdi-close</v-icon>
           </v-btn>
         </v-card-title>

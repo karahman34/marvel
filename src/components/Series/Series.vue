@@ -10,7 +10,10 @@
     <!-- Content -->
     <v-card class="series">
       <!-- Thumbnail -->
-      <v-img :src="thumbnailSrc" />
+      <v-img 
+        min-height="200px"
+        :src="thumbnailSrc"
+      />
 
       <v-card-title>
         <span class="series-title">{{ series.title }}</span>

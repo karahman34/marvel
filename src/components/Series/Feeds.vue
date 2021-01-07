@@ -51,6 +51,7 @@
           <v-img
             :src="`${ser.thumbnail.path}/portrait_incredible.${ser.thumbnail.extension}`"
             class="feed-thumbnail"
+            min-height="380px"
           />
           <!-- Title -->
           <span

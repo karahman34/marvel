@@ -45,6 +45,7 @@
             <v-img
               :src="`${character.thumbnail.path}/portrait_incredible.${character.thumbnail.extension}`"
               class="feed-thumbnail mb-2"
+              min-height="380px"
             />
             <!-- Title -->
             <span
